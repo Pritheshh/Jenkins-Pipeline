@@ -8,6 +8,7 @@ pipeline {
                 bat 'docker build -t my-node-app .'
             }
         }
+
         stage('Test') {
             steps {
                 echo 'Running tests...'
@@ -15,13 +16,17 @@ pipeline {
                 bat 'npm test'
             }
         }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying the app...'
-                // Optional: push to Docker Hub or run locally
-                bat 'docker run -d -p 3000:3000 --name running-node-app my-node-app'
+
+                // Tag the image with your Docker Hub username and repo name
+                bat 'docker tag my-node-app prith5/my-node-app:latest'
+
+                // Push the image to Docker Hub
+                bat 'docker push prith5/my-node-app:latest'
             }
         }
     }
 }
- 
