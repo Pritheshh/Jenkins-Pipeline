@@ -1,29 +1,27 @@
-# CI/CD Node.js App with GitHub Actions and Docker
+# Jenkins CI/CD Pipeline Project
 
-## Overview
-This project automates testing, building a Docker image, and deploying to DockerHub using GitHub Actions.
+## Objective
+Automate build and deployment using Jenkins and Docker on AWS Linux.
 
 ## Tools Used
+- Jenkins
+- Docker
 - Node.js
-- Docker and DockerHub
-- GitHub Actions
+- AWS EC2 (Ubuntu/Linux)
+- Ngrok
 
-## Setup Steps
-1. Initialized the Node.js app with a basic HTTP server.
-2. Created a Dockerfile to package the app.
-3. Set up the GitHub Actions workflow at `.github/workflows/main.yml`.
-4. Configured GitHub Secrets for DockerHub credentials.
-5. Pushed the app to GitHub to trigger the CI/CD pipeline.
+## Steps Followed
 
-## Pipeline Flow
-- Trigger: push to the `main` branch
-- Jobs:
-  - Checkout code
-  - Set up Node.js
-  - Run tests
-  - Build Docker image
-  - Log in to DockerHub
-  - Push image
+1. Launched an EC2 Linux instance and installed Jenkins and Docker.
+2. Created a simple Node.js app with a `Dockerfile`.
+3. Wrote a `Jenkinsfile` defining the stages: Build, Test, Deploy.
+4. Configured the Jenkins pipeline to integrate with GitHub.
+5. Pushed the project to GitHub and tested it through the Jenkins UI.
+6. Used ngrok for forwarding since I installed Jenkins locally.
 
-## DockerHub
-The app image is available at: [https://hub.docker.com/r/prithesh/sample-node-app](https://hub.docker.com/r/prithesh/sample-node-app) 
+## Pipeline Details
+- Trigger: On code commit (Poll SCM or webhook)
+- Stages:
+  - `Build`: Build the Docker image
+  - `Test`: Run placeholder tests
+  - `Deploy`: Run the container from the image
