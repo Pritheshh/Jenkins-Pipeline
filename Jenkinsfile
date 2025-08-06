@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Running tests...'
                 // Add actual test commands if you have any
-                bat 'npm text'
+                bat 'npm test'
             }
         }
         stage('Deploy') {
